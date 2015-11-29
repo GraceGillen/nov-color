@@ -77,6 +77,11 @@ def lighten(state):
     state['needsDisplayUpdate'] = True
     return state
  
+def darken(state):
+    (ip.dark)(state['processed'])
+    state['needsDisplayUpdate'] = True
+    return state
+
 
 ################################################################
 
@@ -89,14 +94,12 @@ def lighten(state):
 # definition indicate which characters the numbers encode.
 #
 menu = {
-    120 : exit,      # x
-    110 : negative,  # n
-    114 : reset,     # r
-    103 : load,      # g
-    115 : save,       # s
-    98 : bwconvert,   # b
-    108: lighten       # l
-    #100 : darken   #d
-    
+    120: exit,      # x
+    110: negative,  # n
+    114: reset,     # r
+    103: load,      # g
+    115: save,       # s
+    98: bwconvert,   # b
+    108: lighten,       # l
+    100: darken
     }
-

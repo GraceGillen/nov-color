@@ -63,3 +63,20 @@ def light(image_surf):
     for x in range(rows):
         for y in range(cols):
             pixels3d[x,y] = lightHelp(pixels3d[x,y])
+
+
+def darkHelp(pixel):
+    if pixel[0] >= 10 and pixel[1] >= 10 and pixel[2] >= 10:
+        return intensify(pixel, -10)
+    else:
+        return intensify(pixel, 0)
+
+
+def dark(image_surf):
+    rows = image_surf.get_size()[0]
+    cols = image_surf.get_size()[1]
+    pixels3d = pg.surfarray.pixels3d(image_surf)
+
+    for x in range(rows):
+        for y in range(cols):
+            pixels3d[x,y] = darkHelp(pixels3d[x,y])
