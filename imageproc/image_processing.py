@@ -21,6 +21,14 @@ def channel(pixel,chan):
 def inverse(pixel):
     return (255-pixel[0], 255-pixel[1], 255-pixel[2])
 
+def invert(image_surf):
+    rows = image_surf.get_size()[0]
+    cols = image_surf.get_size()[1]
+    pixels3d = pg.surfarray.pixels3d(image_surf)
+
+    for x in range(rows):
+        for y in range(cols):
+            pixels3d[x,y] = inverse(pixels3d[x,y])
 
 # intensify: pixel -> nat255 -> pixel
 # brighten each channel of pixel by quantity
@@ -41,3 +49,17 @@ def bw(image_surf):
     for x in range(rows):
         for y in range(cols):
             pixels3d[x,y] = grayPixel(pixels3d[x,y])
+
+def lightHelp(pixel):
+    if pixel[0] <= 245 and pixel[1] <= 245 and pixel[2] <= 245:
+        return intensify(pixel, 10)
+    else:
+        return intensify(pixel, 0)
+def light(image_surf):
+    rows = image_surf.get_size()[0]
+    cols = image_surf.get_size()[1]
+    pixels3d = pg.surfarray.pixels3d(image_surf)
+
+    for x in range(rows):
+        for y in range(cols):
+            pixels3d[x,y] = lightHelp(pixels3d[x,y])

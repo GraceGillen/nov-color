@@ -72,6 +72,12 @@ def bwconvert(state):
     state['needsDisplayUpdate'] = True
     return state
 
+def lighten(state):
+    (ip.light)(state['processed'])
+    state['needsDisplayUpdate'] = True
+    return state
+ 
+
 ################################################################
 
 # A menu simply associated functions to call with menu items.
@@ -86,8 +92,11 @@ menu = {
     120 : exit,      # x
     110 : negative,  # n
     114 : reset,     # r
-    108 : load,      # l
+    103 : load,      # g
     115 : save,       # s
-    98 : bwconvert   # b
+    98 : bwconvert,   # b
+    108: lighten       # l
+    #100 : darken   #d
+    
     }
 
